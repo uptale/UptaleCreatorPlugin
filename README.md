@@ -6,20 +6,28 @@ through a plugin-local MCP server.
 ## MCP Runtime
 
 The plugin is wired to load MCP servers from [`.mcp.json`](.mcp.json). The configured server is
-`uptale`, and it runs:
+`uptale`, and it runs the bundled MCP file directly:
 
 ```powershell
-node ./scripts/run-uptale-mcp.mjs
+node ./mcp/uptale-mcp.mjs
 ```
 
-Paste the built MCP runtime from:
+Generate the bundled file from:
 
 ```text
 C:\Users\LilianCambillau\source\repos\UptalePlatform\McpServer
 ```
 
-into [`mcp/`](mcp/), so [`mcp/build/index.js`](mcp/build/index.js) exists. If the build is not
-self-contained, keep or install the production dependencies in `mcp/node_modules`.
+by running:
+
+```powershell
+pnpm run bundle:plugin
+```
+
+That creates `build/uptale-mcp.mjs` in the MCP project. Copy that file into
+[`mcp/uptale-mcp.mjs`](mcp/uptale-mcp.mjs) when updating the plugin. It is intended to be
+self-contained for the platform used to build it and does not require plugin-local `node_modules` or
+`mcp/package.json`.
 
 Default environment:
 
@@ -29,24 +37,17 @@ Default environment:
 }
 ```
 
-To set the environment once after install, run:
-
-```powershell
-.\scripts\set-mcp-environment.ps1 prod-eu
-```
-
-Supported values are `dev`, `prod-eu`, `prod-us`, and `local`. The script writes
-`mcp/runtime-config.json`, which the MCP launcher reads before falling back to `prod-eu`.
+To change the environment, edit [`.mcp.json`](.mcp.json) and set `UPTALE_MCP_ENVIRONMENT`.
 
 ## Static Check
 
-After pasting the MCP build, run:
+After copying the MCP bundle into the plugin, run:
 
 ```powershell
-.\scripts\verify-mcp-runtime.ps1
+node --check .\mcp\uptale-mcp.mjs
 ```
 
-The check verifies that the MCP config, runtime package, and `mcp/build/index.js` are present.
+That checks the generated file syntax.
 
 ## Skill Planning
 

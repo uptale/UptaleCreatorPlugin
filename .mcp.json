@@ -3,7 +3,7 @@
     "uptale": {
       "command": "node",
       "args": [
-        "./scripts/run-uptale-mcp.mjs"
+        "./mcp/uptale-mcp.mjs"
       ],
       "env": {
         "UPTALE_MCP_ENVIRONMENT": "prod-eu"
