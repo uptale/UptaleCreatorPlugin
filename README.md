@@ -3,6 +3,15 @@
 Plugin scaffold for Uptale creators to design immersive storyboards and operate Uptale experiences
 through a plugin-local MCP server.
 
+## Git Marketplace
+
+This repository includes a Codex marketplace file at
+[`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json). Add this repository as a Git
+marketplace in Codex to install the `uptale-creator` plugin.
+
+The marketplace entry points to `./` because this repository is both the marketplace root and the
+plugin root.
+
 ## MCP Runtime
 
 The plugin is wired to load MCP servers from [`.mcp.json`](.mcp.json). The configured server is

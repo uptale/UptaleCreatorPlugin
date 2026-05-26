@@ -1,0 +1,20 @@
+{
+  "name": "uptale-creator",
+  "interface": {
+    "displayName": "Uptale Creator"
+  },
+  "plugins": [
+    {
+      "name": "uptale-creator",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
