@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale Scenario Workflow"
+  short_description: "Guide Uptale scenario design."
+  default_prompt: "Design an Uptale immersive storyboard."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale Live Review"
+  short_description: "Review live Uptale experiences."
+  default_prompt: "Review an Uptale experience."

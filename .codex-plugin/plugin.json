@@ -1,18 +1,27 @@
 {
   "name": "uptale-creator-plugin",
   "version": "0.1.0",
-  "description": "Plugin for Uptale creators to create and edit Uptale experiences.",
+  "description": "Plugin for Uptale creators to design immersive storyboards and operate Uptale experiences through MCP.",
   "author": {
     "name": "Uptale"
   },
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Uptale Creator Plugin",
-    "shortDescription": "Create and edit Uptale experiences in Codex.",
-    "longDescription": "Uptale Creator Plugin provides a local Codex plugin scaffold for building creator workflows around Uptale experiences.",
+    "shortDescription": "Design and edit Uptale experiences in Codex.",
+    "longDescription": "Uptale Creator Plugin provides a local Codex plugin scaffold for immersive storyboard workflows and a plugin-local Uptale MCP runtime.",
     "developerName": "Uptale",
     "category": "Productivity",
-    "capabilities": [],
-    "defaultPrompt": "Help me build an Uptale creator workflow."
+    "capabilities": [
+      "MCP",
+      "Storyboarding",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Design an Uptale immersive storyboard.",
+      "Review an Uptale experience with MCP.",
+      "Create scenes and tags from a storyboard."
+    ]
   }
 }

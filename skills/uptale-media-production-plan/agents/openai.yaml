@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale Media Plan"
+  short_description: "Create media production checklists."
+  default_prompt: "Build an Uptale media plan."

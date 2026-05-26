@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale 360 Mockups"
+  short_description: "Prompt storyboard-style 360 mockups."
+  default_prompt: "Create a 360 scene mockup."

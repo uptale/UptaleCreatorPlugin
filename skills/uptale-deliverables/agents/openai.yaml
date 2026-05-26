@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale Deliverables"
+  short_description: "Generate storyboard deliverables."
+  default_prompt: "Generate Uptale deliverables."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale Tag Reference"
+  short_description: "Use Uptale tags and exercise patterns."
+  default_prompt: "Plan Uptale scene tags."

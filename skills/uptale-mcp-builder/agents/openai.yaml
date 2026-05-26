@@ -1,0 +1,4 @@
+interface:
+  display_name: "Uptale MCP Builder"
+  short_description: "Apply validated storyboards through MCP."
+  default_prompt: "Create Uptale scenes and tags."
