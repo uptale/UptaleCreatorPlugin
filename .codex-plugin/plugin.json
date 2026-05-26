@@ -1,0 +1,18 @@
+{
+  "name": "uptale-creator-plugin",
+  "version": "0.1.0",
+  "description": "Plugin for Uptale creators to create and edit Uptale experiences.",
+  "author": {
+    "name": "Uptale"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Uptale Creator Plugin",
+    "shortDescription": "Create and edit Uptale experiences in Codex.",
+    "longDescription": "Uptale Creator Plugin provides a local Codex plugin scaffold for building creator workflows around Uptale experiences.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Help me build an Uptale creator workflow."
+  }
+}
