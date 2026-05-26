@@ -8,7 +8,7 @@
       "name": "uptale-creator",
       "source": {
         "source": "local",
-        "path": "./"
+        "path": "./plugins/uptale-creator"
       },
       "policy": {
         "installation": "AVAILABLE",
