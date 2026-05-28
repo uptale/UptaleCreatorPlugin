@@ -1,13 +1,15 @@
 {
-  "uptale": {
-    "command": "node",
-    "cwd": ".",
-    "args": [
-      "./mcp/uptale-mcp.mjs"
-    ],
-    "env": {
-      "NODE_OPTIONS": "--use-system-ca",
-      "UPTALE_MCP_ENVIRONMENT": "dev"
+  "mcpServers": {
+    "uptale": {
+      "command": "node",
+      "cwd": "./mcp",
+      "args": [
+        "uptale-mcp.mjs"
+      ],
+      "env": {
+        "NODE_OPTIONS": "--use-system-ca",
+        "UPTALE_MCP_ENVIRONMENT": "dev"
+      }
     }
   }
 }
