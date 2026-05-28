@@ -10,6 +10,9 @@ The plugin MCP config runs:
 node ./mcp/uptale-mcp.mjs
 ```
 
+`.mcp.json` sets `cwd` to the plugin root so this relative path resolves from the installed plugin,
+not from the user's current workspace.
+
 ## Expected Layout
 
 The useful runtime layout is:

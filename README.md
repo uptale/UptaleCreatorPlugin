@@ -22,6 +22,10 @@ The plugin is wired to load MCP servers from
 node ./mcp/uptale-mcp.mjs
 ```
 
+The MCP config also sets `cwd` to the plugin root. Keep that in place: Codex may start bundled MCP
+servers from the current workspace or app process directory, and the relative `./mcp/uptale-mcp.mjs`
+path only resolves correctly when the server process working directory is the installed plugin root.
+
 Generate the bundled file from:
 
 ```text
@@ -44,7 +48,7 @@ Default environment:
 
 ```json
 {
-  "UPTALE_MCP_ENVIRONMENT": "prod-eu"
+  "UPTALE_MCP_ENVIRONMENT": "dev"
 }
 ```
 

@@ -1,6 +1,7 @@
 {
   "uptale": {
     "command": "node",
+    "cwd": ".",
     "args": [
       "./mcp/uptale-mcp.mjs"
     ],
