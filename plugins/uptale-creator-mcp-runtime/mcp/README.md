@@ -4,14 +4,14 @@ This folder contains the plugin-local bundled MCP server copied from:
 
 `C:\Users\LilianCambillau\source\repos\UptalePlatform\McpServer`
 
-The plugin MCP config runs:
+Each environment plugin MCP config runs:
 
 ```powershell
-node ./mcp/uptale-mcp.mjs
+node uptale-mcp.mjs
 ```
 
-`.mcp.json` sets `cwd` to the plugin root so this relative path resolves from the installed plugin,
-not from the user's current workspace.
+`.mcp.json` sets `cwd` to `../uptale-creator-mcp-runtime/mcp` so `uptale-mcp.mjs` resolves from
+this shared runtime directory, not from the user's current workspace.
 
 ## Expected Layout
 
@@ -28,7 +28,8 @@ To generate it in the MCP project, run:
 pnpm run bundle:plugin
 ```
 
-Then copy `build/uptale-mcp.mjs` from the MCP project to `mcp/uptale-mcp.mjs` in this plugin.
+Then copy `build/uptale-mcp.mjs` from the MCP project to `mcp/uptale-mcp.mjs` in this shared runtime
+folder.
 
 `uptale-mcp.mjs` is a single-file bundle. It embeds the installed keyring native binary and extracts
 that binary to a temp folder at runtime.
@@ -40,7 +41,6 @@ that binary to a temp folder at runtime.
 - `dev`
 - `prod-eu`
 - `prod-us`
-- `local`
 
 The MCP server exposes OAuth login through the `uptale_login` tool, then stores tokens securely for
 later API calls.

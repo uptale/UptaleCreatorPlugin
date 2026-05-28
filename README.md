@@ -1,30 +1,40 @@
 # UptaleCreatorPlugin
 
 Plugin scaffold for Uptale creators to design immersive storyboards and operate Uptale experiences
-through a plugin-local MCP server.
+through environment-specific plugin-local MCP servers.
 
 ## Git Marketplace
 
 This repository includes a Codex marketplace file at
 [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json). Add this repository as a Git
-marketplace in Codex to install the `uptale-creator` plugin.
+marketplace in Codex to install the Uptale skill and MCP environment plugins.
 
-The marketplace entry points to [`./plugins/uptale-creator`](plugins/uptale-creator), which contains
-the plugin manifest, skills, and bundled MCP runtime.
+The marketplace exposes separate plugins so skills can be installed independently from the MCP
+environment:
+
+- [`uptale-creator-skills`](plugins/uptale-creator-skills): Uptale scenario, review, MCP planning,
+  deliverable, media planning, reference, and 360 mockup skills.
+- [`uptale-creator-dev`](plugins/uptale-creator-dev): MCP server configured for `dev`.
+- [`uptale-creator-prod-eu`](plugins/uptale-creator-prod-eu): MCP server configured for `prod-eu`.
+- [`uptale-creator-prod-us`](plugins/uptale-creator-prod-us): MCP server configured for `prod-us`.
+
+The shared bundled MCP runtime lives once in
+[`plugins/uptale-creator-mcp-runtime/mcp`](plugins/uptale-creator-mcp-runtime/mcp). The environment
+plugins only contain manifests and `.mcp.json` files that point to that shared runtime.
 
 ## MCP Runtime
 
-The plugin is wired to load MCP servers from
-[`plugins/uptale-creator/.mcp.json`](plugins/uptale-creator/.mcp.json). The configured server is
-`uptale`, and it runs the bundled MCP file directly:
+Each MCP plugin is wired to load one MCP server from its own `.mcp.json`. The configured servers
+are `uptale-dev`, `uptale-prod-eu`, and `uptale-prod-us`, and each runs the shared bundled MCP file:
 
 ```powershell
-node ./mcp/uptale-mcp.mjs
+node uptale-mcp.mjs
 ```
 
-The MCP config also sets `cwd` to the plugin root. Keep that in place: Codex may start bundled MCP
-servers from the current workspace or app process directory, and the relative `./mcp/uptale-mcp.mjs`
-path only resolves correctly when the server process working directory is the installed plugin root.
+The MCP config sets `cwd` to `../uptale-creator-mcp-runtime/mcp`. Keep that in place: Codex may
+start bundled MCP servers from the current workspace or app process directory, and the relative
+`uptale-mcp.mjs` path only resolves correctly when the server process working directory is the
+shared runtime MCP directory.
 
 Generate the bundled file from:
 
@@ -38,30 +48,20 @@ by running:
 pnpm run bundle:plugin
 ```
 
-That creates `build/uptale-mcp.mjs` in the MCP project. Copy that file into
-[`plugins/uptale-creator/mcp/uptale-mcp.mjs`](plugins/uptale-creator/mcp/uptale-mcp.mjs) when
-updating the plugin. It is intended to be
-self-contained for the platform used to build it and does not require plugin-local `node_modules` or
-`mcp/package.json`.
+That creates `build/uptale-mcp.mjs` in the MCP project. Copy that file into the shared runtime when
+updating the plugin:
 
-Default environment:
+[`plugins/uptale-creator-mcp-runtime/mcp/uptale-mcp.mjs`](plugins/uptale-creator-mcp-runtime/mcp/uptale-mcp.mjs)
 
-```json
-{
-  "UPTALE_MCP_ENVIRONMENT": "dev"
-}
-```
-
-To change the environment, edit
-[`plugins/uptale-creator/.mcp.json`](plugins/uptale-creator/.mcp.json) and set
-`UPTALE_MCP_ENVIRONMENT`.
+The MCP environment is fixed per plugin through `UPTALE_MCP_ENVIRONMENT`, so users install the
+environment they want instead of editing `.mcp.json`.
 
 ## Static Check
 
 After copying the MCP bundle into the plugin, run:
 
 ```powershell
-node --check .\plugins\uptale-creator\mcp\uptale-mcp.mjs
+node --check .\plugins\uptale-creator-mcp-runtime\mcp\uptale-mcp.mjs
 ```
 
 That checks the generated file syntax.
@@ -69,6 +69,6 @@ That checks the generated file syntax.
 ## Skill Planning
 
 The proposed skill architecture is documented in
-[`plugins/uptale-creator/docs/skills-roadmap.md`](plugins/uptale-creator/docs/skills-roadmap.md). It separates the conversation workflow, Uptale
+[`plugins/uptale-creator-skills/docs/skills-roadmap.md`](plugins/uptale-creator-skills/docs/skills-roadmap.md). It separates the conversation workflow, Uptale
 tag/exercise references, MCP application, live review, media planning, final deliverables, and 360
 mockup prompting.

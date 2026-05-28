@@ -1,14 +1,14 @@
 {
   "mcpServers": {
-    "uptale": {
+    "uptale-prod-eu": {
       "command": "node",
-      "cwd": "./mcp",
+      "cwd": "../uptale-creator-mcp-runtime/mcp",
       "args": [
         "uptale-mcp.mjs"
       ],
       "env": {
         "NODE_OPTIONS": "--use-system-ca",
-        "UPTALE_MCP_ENVIRONMENT": "dev"
+        "UPTALE_MCP_ENVIRONMENT": "prod-eu"
       }
     }
   }

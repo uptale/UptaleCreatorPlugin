@@ -5,10 +5,46 @@
   },
   "plugins": [
     {
-      "name": "uptale-creator",
+      "name": "uptale-creator-skills",
       "source": {
         "source": "local",
-        "path": "./plugins/uptale-creator"
+        "path": "./plugins/uptale-creator-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-dev",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-dev"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-prod-eu",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-prod-eu"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-prod-us",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-prod-us"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,25 @@
+{
+  "name": "uptale-creator-prod-eu",
+  "version": "0.1.2",
+  "description": "Uptale Creator MCP server configured for the prod-eu environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Uptale Creator MCP Prod EU",
+    "shortDescription": "Connect Codex to Uptale prod-eu.",
+    "longDescription": "Uptale Creator MCP Prod EU provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=prod-eu.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "List my Uptale workspaces in prod-eu.",
+      "Review an Uptale prod-eu experience.",
+      "Create scenes and tags in Uptale prod-eu."
+    ]
+  }
+}

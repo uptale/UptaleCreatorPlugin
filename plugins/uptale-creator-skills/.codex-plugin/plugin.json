@@ -1,0 +1,26 @@
+{
+  "name": "uptale-creator-skills",
+  "version": "0.1.2",
+  "description": "Skill pack for Uptale creators to design immersive storyboards, reviews, media plans, and MCP action plans.",
+  "author": {
+    "name": "Uptale"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Uptale Creator Skills",
+    "shortDescription": "Design Uptale storyboards and production handoffs in Codex.",
+    "longDescription": "Uptale Creator Skills provides Codex workflows for immersive scenario design, tag references, MCP planning, live review, media planning, final deliverables, and 360 mockup prompting.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [
+      "Storyboarding",
+      "Planning",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Design an Uptale immersive storyboard.",
+      "Review an Uptale experience with MCP.",
+      "Create an MCP action plan from a storyboard."
+    ]
+  }
+}

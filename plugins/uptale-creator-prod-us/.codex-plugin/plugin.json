@@ -1,0 +1,25 @@
+{
+  "name": "uptale-creator-prod-us",
+  "version": "0.1.2",
+  "description": "Uptale Creator MCP server configured for the prod-us environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Uptale Creator MCP Prod US",
+    "shortDescription": "Connect Codex to Uptale prod-us.",
+    "longDescription": "Uptale Creator MCP Prod US provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=prod-us.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "List my Uptale workspaces in prod-us.",
+      "Review an Uptale prod-us experience.",
+      "Create scenes and tags in Uptale prod-us."
+    ]
+  }
+}

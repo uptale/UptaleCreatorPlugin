@@ -1,0 +1,25 @@
+{
+  "name": "uptale-creator-dev",
+  "version": "0.1.2",
+  "description": "Uptale Creator MCP server configured for the dev environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Uptale Creator MCP Dev",
+    "shortDescription": "Connect Codex to Uptale dev.",
+    "longDescription": "Uptale Creator MCP Dev provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=dev.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "List my Uptale workspaces in dev.",
+      "Review an Uptale dev experience.",
+      "Create scenes and tags in Uptale dev."
+    ]
+  }
+}
