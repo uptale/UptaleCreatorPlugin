@@ -1,0 +1,10 @@
+{
+  "name": "uptale-creator-prod-us",
+  "version": "0.1.2",
+  "description": "Uptale Creator MCP server configured for the prod-us environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "keywords": ["uptale", "mcp", "prod-us"],
+  "mcpServers": "./mcp.claude.json"
+}

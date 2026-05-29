@@ -1,0 +1,9 @@
+{
+  "name": "uptale-creator-skills",
+  "version": "0.1.2",
+  "description": "Skill pack for Uptale creators to design immersive storyboards, reviews, media plans, and MCP action plans.",
+  "author": {
+    "name": "Uptale"
+  },
+  "keywords": ["uptale", "skills", "storyboard", "immersive", "mcp"]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "uptale-creator",
+  "owner": {
+    "name": "Uptale"
+  },
+  "plugins": [
+    {
+      "name": "uptale-creator-skills",
+      "source": "./plugins/uptale-creator-skills",
+      "description": "Skill pack for Uptale creators: scenario design, MCP planning, live review, media planning, final deliverables, and 360 mockup prompting.",
+      "category": "productivity",
+      "keywords": ["uptale", "skills", "storyboard", "immersive"]
+    },
+    {
+      "name": "uptale-creator-dev",
+      "source": "./plugins/uptale-creator-dev",
+      "description": "Uptale MCP server bundled and pre-configured for the dev environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "dev"]
+    },
+    {
+      "name": "uptale-creator-prod-eu",
+      "source": "./plugins/uptale-creator-prod-eu",
+      "description": "Uptale MCP server bundled and pre-configured for the prod-eu environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "prod-eu"]
+    },
+    {
+      "name": "uptale-creator-prod-us",
+      "source": "./plugins/uptale-creator-prod-us",
+      "description": "Uptale MCP server bundled and pre-configured for the prod-us environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "prod-us"]
+    }
+  ]
+}
