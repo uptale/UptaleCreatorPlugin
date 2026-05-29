@@ -33,15 +33,14 @@ MCP environment:
 Each env plugin runs the bundled `uptale-mcp.mjs` MCP server with `UPTALE_MCP_ENVIRONMENT` fixed
 per-plugin (so users install the environment they want instead of editing config).
 
-The runtime is wired differently per host because of how each host loads plugin files:
+Both hosts now load the bundle from each env plugin's own `mcp/` folder:
 
-- **Codex** uses [`.mcp.json`](plugins/uptale-creator-dev/.mcp.json) with
-  `cwd: "../uptale-creator-mcp-runtime/mcp"`. Codex resolves that relative to the env plugin folder,
-  so all three env plugins share the single bundle at
-  [`plugins/uptale-creator-mcp-runtime/mcp/uptale-mcp.mjs`](plugins/uptale-creator-mcp-runtime/mcp/uptale-mcp.mjs).
+- **Codex** uses [`.mcp.json`](plugins/uptale-creator-dev/.mcp.json) with `cwd: "./mcp"`. Codex
+  resolves that relative to the env plugin folder, so it runs the plugin-local bundle at
+  [`plugins/uptale-creator-dev/mcp/uptale-mcp.mjs`](plugins/uptale-creator-dev/mcp/uptale-mcp.mjs).
 - **Claude Code** copies each plugin into a per-plugin install cache and refuses paths that
-  traverse outside the plugin root. To work around this, each env plugin carries its own copy of
-  the bundle and its `node_modules` at `plugins/uptale-creator-<env>/mcp/`, and
+  traverse outside the plugin root. Each env plugin carries its own copy of the bundle and its
+  `node_modules` at `plugins/uptale-creator-<env>/mcp/`, and
   [`mcp.claude.json`](plugins/uptale-creator-dev/mcp.claude.json) references it via
   `${CLAUDE_PLUGIN_ROOT}/mcp/uptale-mcp.mjs`.
 
@@ -49,9 +48,10 @@ The bundle marks `@napi-rs/keyring` as an external import and resolves it from `
 runtime, so the `mcp/node_modules/@napi-rs/{keyring,keyring-win32-x64-msvc}` packages must sit next
 to `uptale-mcp.mjs` in every env plugin folder.
 
-Net result: one source of truth for Codex; for Claude Code the same bundle (and its keyring
-modules) is duplicated into each env plugin folder. Updating the bundle requires refreshing all
-four locations (see below).
+Net result: each env plugin is self-contained for both hosts. The shared
+[`plugins/uptale-creator-mcp-runtime/mcp`](plugins/uptale-creator-mcp-runtime/mcp) folder is no
+longer referenced at runtime; it stays as the staging copy from which the bundle is fanned out to
+each env plugin. Updating the bundle requires refreshing all four locations (see below).
 
 ## Updating the bundle
 

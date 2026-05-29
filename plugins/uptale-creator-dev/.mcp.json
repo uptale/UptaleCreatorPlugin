@@ -2,7 +2,7 @@
   "mcpServers": {
     "uptale-dev": {
       "command": "node",
-      "cwd": "../uptale-creator-mcp-runtime/mcp",
+      "cwd": "./mcp",
       "args": [
         "uptale-mcp.mjs"
       ],

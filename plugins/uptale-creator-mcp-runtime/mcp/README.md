@@ -1,17 +1,19 @@
 # Uptale MCP Runtime
 
-This folder contains the plugin-local bundled MCP server copied from:
+This folder is the staging copy of the bundled MCP server generated from:
 
 `C:\Users\LilianCambillau\source\repos\UptalePlatform\McpServer`
 
-Each environment plugin MCP config runs:
+Each environment plugin runs the bundle from its own `mcp/` folder:
 
 ```powershell
 node uptale-mcp.mjs
 ```
 
-`.mcp.json` sets `cwd` to `../uptale-creator-mcp-runtime/mcp` so `uptale-mcp.mjs` resolves from
-this shared runtime directory, not from the user's current workspace.
+Both hosts now load the bundle plugin-locally: Codex via `.mcp.json` (`cwd: "./mcp"`) and Claude
+Code via `mcp.claude.json` (`${CLAUDE_PLUGIN_ROOT}/mcp/uptale-mcp.mjs`). This folder is no longer
+referenced at runtime; it is the source from which the bundle is copied into each env plugin's
+`mcp/` folder (see the repo root README for the update steps).
 
 ## Expected Layout
 
