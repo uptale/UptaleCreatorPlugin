@@ -19,12 +19,13 @@ In Claude Code:
 /plugin install uptale-creator-dev@uptale-creator
 ```
 
-Both marketplaces expose the same four plugins so skills can be installed independently from the
+Both marketplaces expose the same five plugins so skills can be installed independently from the
 MCP environment:
 
 - [`uptale-creator-skills`](plugins/uptale-creator-skills): Uptale scenario, review, MCP planning,
   deliverable, media planning, reference, and 360 mockup skills.
 - [`uptale-creator-dev`](plugins/uptale-creator-dev): MCP server configured for `dev`.
+- [`uptale-creator-stg`](plugins/uptale-creator-stg): MCP server configured for `stg`.
 - [`uptale-creator-prod-eu`](plugins/uptale-creator-prod-eu): MCP server configured for `prod-eu`.
 - [`uptale-creator-prod-us`](plugins/uptale-creator-prod-us): MCP server configured for `prod-us`.
 
@@ -50,8 +51,9 @@ to `uptale-mcp.mjs` in every env plugin folder.
 
 Net result: each env plugin is self-contained for both hosts. The shared
 [`plugins/uptale-creator-mcp-runtime/mcp`](plugins/uptale-creator-mcp-runtime/mcp) folder is no
-longer referenced at runtime; it stays as the staging copy from which the bundle is fanned out to
-each env plugin. Updating the bundle requires refreshing all four locations (see below).
+longer referenced at runtime; it stays as the shared source copy from which the bundle is fanned out to
+each env plugin. Updating the bundle requires refreshing the shared runtime and every env plugin
+(see below).
 
 ## Updating the bundle
 
@@ -67,31 +69,37 @@ by running:
 pnpm run bundle:plugin
 ```
 
-That creates `build/uptale-mcp.mjs` in the MCP project. Copy it into all four locations:
+That creates `build/uptale-mcp.mjs` in the MCP project. Copy it once into the shared runtime:
 
 ```powershell
 copy build\uptale-mcp.mjs plugins\uptale-creator-mcp-runtime\mcp\uptale-mcp.mjs
-copy build\uptale-mcp.mjs plugins\uptale-creator-dev\mcp\uptale-mcp.mjs
-copy build\uptale-mcp.mjs plugins\uptale-creator-prod-eu\mcp\uptale-mcp.mjs
-copy build\uptale-mcp.mjs plugins\uptale-creator-prod-us\mcp\uptale-mcp.mjs
 ```
 
-If you ever upgrade the keyring dependency, also resync `node_modules` from the shared runtime into
-each env plugin:
+Then fan it out to every env plugin:
 
 ```powershell
-robocopy plugins\uptale-creator-mcp-runtime\mcp\node_modules plugins\uptale-creator-dev\mcp\node_modules /MIR
-robocopy plugins\uptale-creator-mcp-runtime\mcp\node_modules plugins\uptale-creator-prod-eu\mcp\node_modules /MIR
-robocopy plugins\uptale-creator-mcp-runtime\mcp\node_modules plugins\uptale-creator-prod-us\mcp\node_modules /MIR
+.\scripts\deploy-mcp.ps1
 ```
+
+By default, the script copies the shared runtime bundle from
+`plugins\uptale-creator-mcp-runtime\mcp` into:
+
+- `plugins\uptale-creator-dev\mcp`
+- `plugins\uptale-creator-stg\mcp`
+- `plugins\uptale-creator-prod-eu\mcp`
+- `plugins\uptale-creator-prod-us\mcp`
+
+It also copies `node_modules` when that folder exists next to the shared runtime bundle, then runs
+`node --check` against the shared bundle and every copied bundle.
 
 ## Static Check
 
-After copying, syntax-check every bundle:
+The deploy script runs this automatically. To check bundles manually:
 
 ```powershell
 node --check .\plugins\uptale-creator-mcp-runtime\mcp\uptale-mcp.mjs
 node --check .\plugins\uptale-creator-dev\mcp\uptale-mcp.mjs
+node --check .\plugins\uptale-creator-stg\mcp\uptale-mcp.mjs
 node --check .\plugins\uptale-creator-prod-eu\mcp\uptale-mcp.mjs
 node --check .\plugins\uptale-creator-prod-us\mcp\uptale-mcp.mjs
 ```

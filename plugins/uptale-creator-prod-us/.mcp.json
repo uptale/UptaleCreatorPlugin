@@ -7,7 +7,6 @@
         "uptale-mcp.mjs"
       ],
       "env": {
-        "NODE_OPTIONS": "--use-system-ca",
         "UPTALE_MCP_ENVIRONMENT": "prod-us"
       }
     }

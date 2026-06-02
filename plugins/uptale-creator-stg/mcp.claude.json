@@ -1,12 +1,12 @@
 {
   "mcpServers": {
-    "uptale-prod-us": {
+    "uptale-stg": {
       "command": "node",
       "args": [
         "${CLAUDE_PLUGIN_ROOT}/mcp/uptale-mcp.mjs"
       ],
       "env": {
-        "UPTALE_MCP_ENVIRONMENT": "prod-us"
+        "UPTALE_MCP_ENVIRONMENT": "stg"
       }
     }
   }

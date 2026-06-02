@@ -29,6 +29,18 @@
       "category": "Productivity"
     },
     {
+      "name": "uptale-creator-stg",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-stg"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "uptale-creator-prod-eu",
       "source": {
         "source": "local",

@@ -1,13 +1,13 @@
 {
   "mcpServers": {
-    "uptale-dev": {
+    "uptale-stg": {
       "command": "node",
       "cwd": "./mcp",
       "args": [
         "uptale-mcp.mjs"
       ],
       "env": {
-        "UPTALE_MCP_ENVIRONMENT": "dev"
+        "UPTALE_MCP_ENVIRONMENT": "stg"
       }
     }
   }

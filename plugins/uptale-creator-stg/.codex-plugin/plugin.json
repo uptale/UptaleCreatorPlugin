@@ -1,0 +1,25 @@
+{
+  "name": "uptale-creator-stg",
+  "version": "0.1.4",
+  "description": "Uptale Creator MCP server configured for the staging environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Uptale Creator MCP Staging",
+    "shortDescription": "Connect Codex to Uptale staging.",
+    "longDescription": "Uptale Creator MCP Staging provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=stg.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "List my Uptale workspaces in staging.",
+      "Review an Uptale staging experience.",
+      "Create scenes and tags in Uptale staging."
+    ]
+  }
+}

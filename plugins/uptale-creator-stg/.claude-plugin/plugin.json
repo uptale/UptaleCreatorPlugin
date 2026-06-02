@@ -1,0 +1,10 @@
+{
+  "name": "uptale-creator-stg",
+  "version": "0.1.4",
+  "description": "Uptale Creator MCP server configured for the staging environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "keywords": ["uptale", "mcp", "stg", "staging"],
+  "mcpServers": "./mcp.claude.json"
+}

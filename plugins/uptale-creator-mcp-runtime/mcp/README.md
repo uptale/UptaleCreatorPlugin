@@ -1,6 +1,6 @@
 # Uptale MCP Runtime
 
-This folder is the staging copy of the bundled MCP server generated from:
+This folder is the shared source copy of the bundled MCP server generated from:
 
 `C:\Users\LilianCambillau\source\repos\UptalePlatform\McpServer`
 
@@ -41,6 +41,7 @@ that binary to a temp folder at runtime.
 `.mcp.json` sets `UPTALE_MCP_ENVIRONMENT`. Supported values are:
 
 - `dev`
+- `stg`
 - `prod-eu`
 - `prod-us`
 
