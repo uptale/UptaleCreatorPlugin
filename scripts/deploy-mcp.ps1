@@ -1,3 +1,7 @@
+param(
+    [switch]$SkipVersionBump
+)
+
 $ErrorActionPreference = "Stop"
 
 $SourceMcpDir = Join-Path $PSScriptRoot "..\plugins\uptale-creator-mcp-runtime\mcp"
@@ -6,6 +10,17 @@ $TargetPluginDirs = @(
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-stg"),
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-eu"),
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-us")
+)
+
+$ManifestRelativePaths = @(
+    "plugins\uptale-creator-dev\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-dev\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-stg\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-stg\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-prod-eu\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-prod-eu\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-prod-us\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-prod-us\.claude-plugin\plugin.json"
 )
 
 function Resolve-ExistingPath {
@@ -50,6 +65,44 @@ function Copy-McpItem {
     }
 }
 
+function Get-NextPatchVersion {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$CurrentVersion
+    )
+
+    $parts = $CurrentVersion.Split(".")
+    if ($parts.Count -ne 3) {
+        throw "Cannot bump version '$CurrentVersion'. Expected a version like 0.1.6."
+    }
+
+    $major = 0
+    $minor = 0
+    $patch = 0
+    if (
+        -not [int]::TryParse($parts[0], [ref]$major) -or
+        -not [int]::TryParse($parts[1], [ref]$minor) -or
+        -not [int]::TryParse($parts[2], [ref]$patch)
+    ) {
+        throw "Cannot bump version '$CurrentVersion'. All parts must be integers."
+    }
+
+    return "$major.$minor.$($patch + 1)"
+}
+
+function Update-ManifestVersion {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+        [Parameter(Mandatory = $true)]
+        [string]$Version
+    )
+
+    $content = Get-Content -LiteralPath $Path -Raw
+    $updatedContent = $content -replace '("version"\s*:\s*")[^"]+(")', "`${1}$Version`${2}"
+    Set-Content -LiteralPath $Path -Value $updatedContent -NoNewline -Encoding UTF8
+}
+
 $resolvedSourceMcpDir = Resolve-ExistingPath $SourceMcpDir
 $sourceBundle = Join-Path $resolvedSourceMcpDir "uptale-mcp.mjs"
 $sourceNodeModules = Join-Path $resolvedSourceMcpDir "node_modules"
@@ -83,6 +136,23 @@ foreach ($targetPluginDir in $TargetPluginDirs) {
 foreach ($bundle in $deployedBundles) {
     Write-Host "Checking: $bundle"
     node --check $bundle
+}
+
+if (-not $SkipVersionBump) {
+    $pluginRoot = Resolve-ExistingPath (Join-Path $PSScriptRoot "..")
+    $manifestPaths = $ManifestRelativePaths | ForEach-Object { Join-Path $pluginRoot $_ }
+    $firstManifest = Resolve-ExistingPath $manifestPaths[0]
+    $firstManifestContent = Get-Content -LiteralPath $firstManifest -Raw | ConvertFrom-Json
+    $nextVersion = Get-NextPatchVersion $firstManifestContent.version
+
+    foreach ($manifestPath in $manifestPaths) {
+        $resolvedManifestPath = Resolve-ExistingPath $manifestPath
+        Update-ManifestVersion -Path $resolvedManifestPath -Version $nextVersion
+        Write-Host "Updated manifest version: $resolvedManifestPath -> $nextVersion"
+    }
+}
+else {
+    Write-Host "Skipping manifest version bump."
 }
 
 Write-Host "MCP deploy complete."
