@@ -1,10 +1,12 @@
 {
   "mcpServers": {
     "uptale-stg": {
-      "command": "node",
+      "command": "powershell.exe",
       "cwd": "./mcp",
       "args": [
-        "uptale-mcp.mjs"
+        "-NoProfile",
+        "-Command",
+        "& \"$env:USERPROFILE\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"uptale-mcp.mjs\""
       ],
       "env": {
         "UPTALE_MCP_ENVIRONMENT": "stg"
