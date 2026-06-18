@@ -1,6 +1,6 @@
 ﻿{
   "name": "uptale-creator-dev",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Uptale Creator MCP server configured for the dev environment.",
   "author": {
     "name": "Uptale"
