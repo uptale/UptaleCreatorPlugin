@@ -100,7 +100,7 @@ function Update-ManifestVersion {
 
     $content = Get-Content -LiteralPath $Path -Raw
     $updatedContent = $content -replace '("version"\s*:\s*")[^"]+(")', "`${1}$Version`${2}"
-    Set-Content -LiteralPath $Path -Value $updatedContent -NoNewline -Encoding UTF8
+    $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText($Path, $updatedContent, $utf8NoBom)
 }
 
 $resolvedSourceMcpDir = Resolve-ExistingPath $SourceMcpDir
