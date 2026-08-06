@@ -1,0 +1,24 @@
+{
+  "name": "uptale-creator-dev-macos",
+  "version": "0.1.43",
+  "description": "Uptale Creator MCP server for macOS configured for the dev environment.",
+  "author": {"name": "Uptale"},
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "[macOS only] Uptale Creator MCP Dev",
+    "shortDescription": "Connect Codex on macOS to Uptale dev.",
+    "longDescription": "Uptale Creator MCP Dev for macOS uses Codex's managed Node.js runtime and UPTALE_MCP_ENVIRONMENT=dev.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "brandColor": "#28F0D2",
+    "composerIcon": "./assets/uptale-logo-mini.svg",
+    "logo": "./assets/uptale-logo-mini.svg",
+    "logoDark": "./assets/uptale-logo-mini.svg",
+    "capabilities": ["MCP", "Write"],
+    "defaultPrompt": [
+      "List my Uptale workspaces in dev.",
+      "Review an Uptale dev experience.",
+      "Create scenes and tags in Uptale dev."
+    ]
+  }
+}

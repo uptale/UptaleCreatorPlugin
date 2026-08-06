@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-stg",
-  "version": "0.1.41",
+  "version": "0.1.43",
   "description": "Uptale Creator MCP server configured for the staging environment.",
   "author": {
     "name": "Uptale"
@@ -12,6 +12,10 @@
     "longDescription": "Uptale Creator MCP Staging provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=stg.",
     "developerName": "Uptale",
     "category": "Productivity",
+    "brandColor": "#FFF36D",
+    "composerIcon": "./assets/uptale-logo-mini.svg",
+    "logo": "./assets/uptale-logo-mini.svg",
+    "logoDark": "./assets/uptale-logo-mini.svg",
     "capabilities": [
       "MCP",
       "Write"

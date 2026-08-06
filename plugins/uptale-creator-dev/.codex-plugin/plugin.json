@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-dev",
-  "version": "0.1.41",
+  "version": "0.1.43",
   "description": "Uptale Creator MCP server configured for the dev environment.",
   "author": {
     "name": "Uptale"
@@ -12,6 +12,10 @@
     "longDescription": "Uptale Creator MCP Dev provides the plugin-local Uptale MCP runtime configured with UPTALE_MCP_ENVIRONMENT=dev.",
     "developerName": "Uptale",
     "category": "Productivity",
+    "brandColor": "#28F0D2",
+    "composerIcon": "./assets/uptale-logo-mini.svg",
+    "logo": "./assets/uptale-logo-mini.svg",
+    "logoDark": "./assets/uptale-logo-mini.svg",
     "capabilities": [
       "MCP",
       "Write"

@@ -1,0 +1,24 @@
+{
+  "name": "uptale-creator-stg-macos",
+  "version": "0.1.43",
+  "description": "Uptale Creator MCP server for macOS configured for the staging environment.",
+  "author": {"name": "Uptale"},
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "[macOS only] Uptale Creator MCP Staging",
+    "shortDescription": "Connect Codex on macOS to Uptale staging.",
+    "longDescription": "Uptale Creator MCP Staging for macOS uses Codex's managed Node.js runtime and UPTALE_MCP_ENVIRONMENT=stg.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "brandColor": "#FFF36D",
+    "composerIcon": "./assets/uptale-logo-mini.svg",
+    "logo": "./assets/uptale-logo-mini.svg",
+    "logoDark": "./assets/uptale-logo-mini.svg",
+    "capabilities": ["MCP", "Write"],
+    "defaultPrompt": [
+      "List my Uptale workspaces in staging.",
+      "Review an Uptale staging experience.",
+      "Create scenes and tags in Uptale staging."
+    ]
+  }
+}

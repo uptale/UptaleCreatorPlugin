@@ -1,0 +1,24 @@
+{
+  "name": "uptale-creator-prod-eu-macos",
+  "version": "0.1.43",
+  "description": "Uptale Creator MCP server for macOS configured for the prod-eu environment.",
+  "author": {"name": "Uptale"},
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "[macOS only] Uptale Creator MCP Prod EU",
+    "shortDescription": "Connect Codex on macOS to Uptale prod-eu.",
+    "longDescription": "Uptale Creator MCP Prod EU for macOS uses Codex's managed Node.js runtime and UPTALE_MCP_ENVIRONMENT=prod-eu.",
+    "developerName": "Uptale",
+    "category": "Productivity",
+    "brandColor": "#29C7FF",
+    "composerIcon": "./assets/uptale-logo-mini.svg",
+    "logo": "./assets/uptale-logo-mini.svg",
+    "logoDark": "./assets/uptale-logo-mini.svg",
+    "capabilities": ["MCP", "Write"],
+    "defaultPrompt": [
+      "List my Uptale workspaces in prod-eu.",
+      "Review an Uptale prod-eu experience.",
+      "Create scenes and tags in Uptale prod-eu."
+    ]
+  }
+}

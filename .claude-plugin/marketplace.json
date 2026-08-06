@@ -38,6 +38,34 @@
       "description": "Uptale MCP server bundled and pre-configured for the prod-us environment.",
       "category": "productivity",
       "keywords": ["uptale", "mcp", "prod-us"]
+    },
+    {
+      "name": "uptale-creator-dev-macos",
+      "source": "./plugins/uptale-creator-dev-macos",
+      "description": "Uptale MCP server for macOS bundled and pre-configured for the dev environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "dev", "macos"]
+    },
+    {
+      "name": "uptale-creator-stg-macos",
+      "source": "./plugins/uptale-creator-stg-macos",
+      "description": "Uptale MCP server for macOS bundled and pre-configured for the staging environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "stg", "staging", "macos"]
+    },
+    {
+      "name": "uptale-creator-prod-eu-macos",
+      "source": "./plugins/uptale-creator-prod-eu-macos",
+      "description": "Uptale MCP server for macOS bundled and pre-configured for the prod-eu environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "prod-eu", "macos"]
+    },
+    {
+      "name": "uptale-creator-prod-us-macos",
+      "source": "./plugins/uptale-creator-prod-us-macos",
+      "description": "Uptale MCP server for macOS bundled and pre-configured for the prod-us environment.",
+      "category": "productivity",
+      "keywords": ["uptale", "mcp", "prod-us", "macos"]
     }
   ]
 }

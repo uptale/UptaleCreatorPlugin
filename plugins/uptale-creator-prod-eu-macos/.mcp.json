@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "uptale-prod-eu": {
+      "command": "/bin/sh",
+      "cwd": "./mcp",
+      "args": ["start-mcp-macos.sh"],
+      "env": {"UPTALE_MCP_ENVIRONMENT": "prod-eu"}
+    }
+  }
+}

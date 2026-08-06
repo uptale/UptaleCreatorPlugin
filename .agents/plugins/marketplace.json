@@ -63,6 +63,42 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-dev-macos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-dev-macos"
+      },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-stg-macos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-stg-macos"
+      },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-prod-eu-macos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-prod-eu-macos"
+      },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "uptale-creator-prod-us-macos",
+      "source": {
+        "source": "local",
+        "path": "./plugins/uptale-creator-prod-us-macos"
+      },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
     }
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "name": "uptale-creator-prod-us-macos",
+  "version": "0.1.43",
+  "description": "Uptale Creator MCP server for macOS configured for the prod-us environment.",
+  "author": {
+    "name": "Uptale"
+  },
+  "keywords": ["uptale", "mcp", "prod-us", "macos"],
+  "mcpServers": "./mcp.claude.json"
+}

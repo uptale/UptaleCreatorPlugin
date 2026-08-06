@@ -9,7 +9,11 @@ $TargetPluginDirs = @(
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-dev"),
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-stg"),
     (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-eu"),
-    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-us")
+    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-us"),
+    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-dev-macos"),
+    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-stg-macos"),
+    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-eu-macos"),
+    (Join-Path $PSScriptRoot "..\plugins\uptale-creator-prod-us-macos")
 )
 
 $ManifestRelativePaths = @(
@@ -20,7 +24,15 @@ $ManifestRelativePaths = @(
     "plugins\uptale-creator-prod-eu\.codex-plugin\plugin.json",
     "plugins\uptale-creator-prod-eu\.claude-plugin\plugin.json",
     "plugins\uptale-creator-prod-us\.codex-plugin\plugin.json",
-    "plugins\uptale-creator-prod-us\.claude-plugin\plugin.json"
+    "plugins\uptale-creator-prod-us\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-dev-macos\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-dev-macos\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-stg-macos\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-stg-macos\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-prod-eu-macos\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-prod-eu-macos\.claude-plugin\plugin.json",
+    "plugins\uptale-creator-prod-us-macos\.codex-plugin\plugin.json",
+    "plugins\uptale-creator-prod-us-macos\.claude-plugin\plugin.json"
 )
 
 function Resolve-ExistingPath {
@@ -105,10 +117,15 @@ function Update-ManifestVersion {
 
 $resolvedSourceMcpDir = Resolve-ExistingPath $SourceMcpDir
 $sourceBundle = Join-Path $resolvedSourceMcpDir "uptale-mcp.mjs"
+$sourceMacLauncher = Join-Path $resolvedSourceMcpDir "start-mcp-macos.sh"
 $sourceNodeModules = Join-Path $resolvedSourceMcpDir "node_modules"
 
 if (-not (Test-Path -LiteralPath $sourceBundle)) {
     throw "Source bundle not found: $sourceBundle"
+}
+
+if (-not (Test-Path -LiteralPath $sourceMacLauncher)) {
+    throw "macOS launcher not found: $sourceMacLauncher"
 }
 
 Write-Host "Deploying MCP runtime from: $resolvedSourceMcpDir"
@@ -121,6 +138,9 @@ foreach ($targetPluginDir in $TargetPluginDirs) {
     $targetBundle = Join-Path $targetMcpDir "uptale-mcp.mjs"
 
     Copy-McpItem -Source $sourceBundle -Destination $targetBundle
+    Copy-McpItem `
+        -Source $sourceMacLauncher `
+        -Destination (Join-Path $targetMcpDir "start-mcp-macos.sh")
     $deployedBundles += $targetBundle
 
     if (Test-Path -LiteralPath $sourceNodeModules) {
