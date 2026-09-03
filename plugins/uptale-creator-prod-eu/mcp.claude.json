@@ -1,9 +1,12 @@
 {
   "mcpServers": {
     "uptale-prod-eu": {
-      "command": "node",
+      "command": "powershell.exe",
+      "cwd": "./mcp",
       "args": [
-        "${CLAUDE_PLUGIN_ROOT}/mcp/uptale-mcp.mjs"
+        "-NoProfile",
+        "-Command",
+        "& \"$env:USERPROFILE\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe\" \"uptale-mcp.mjs\""
       ],
       "env": {
         "UPTALE_MCP_ENVIRONMENT": "prod-eu"
