@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-dev-macos",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Uptale Creator MCP server for macOS configured for the dev environment.",
   "author": {"name": "Uptale"},
   "mcpServers": "./.mcp.json",
