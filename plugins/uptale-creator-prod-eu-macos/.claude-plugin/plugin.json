@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-prod-eu-macos",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "description": "Uptale Creator MCP server for macOS configured for the prod-eu environment.",
   "author": {
     "name": "Uptale"
