@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-stg",
-  "version": "0.2.110",
+  "version": "0.2.111",
   "description": "Uptale Creator MCP server configured for the staging environment.",
   "author": {
     "name": "Uptale"
