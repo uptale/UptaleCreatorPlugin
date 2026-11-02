@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-prod-us",
-  "version": "0.2.161",
+  "version": "0.2.162",
   "description": "Uptale Creator MCP server configured for the prod-us environment.",
   "author": {
     "name": "Uptale"
