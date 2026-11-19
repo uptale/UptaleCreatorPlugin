@@ -1,6 +1,6 @@
 {
   "name": "uptale-creator-stg-macos",
-  "version": "0.2.226",
+  "version": "0.2.227",
   "description": "Uptale Creator MCP server for macOS configured for the staging environment.",
   "author": {
     "name": "Uptale"
